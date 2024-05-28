@@ -135,4 +135,14 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
         canLook = !toggle;
     }
+
+    //Á¡ÇÁ´ë
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.name == "JumpPanel")
+        {
+            Debug.Log(collision.gameObject.tag);
+            _rigidbody.AddForce(Vector2.up * 300, ForceMode.Impulse);
+        }
+    }
 }

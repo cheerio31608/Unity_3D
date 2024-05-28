@@ -368,6 +368,7 @@
 "Assets/Scripts/Item/EquipTool.cs"
 "Assets/Scripts/Item/ItemObject.cs"
 "Assets/Scripts/Item/Resource.cs"
+"Assets/Scripts/JumpPanel.cs"
 "Assets/Scripts/MusicZone.cs"
 "Assets/Scripts/NPC.cs"
 "Assets/Scripts/Player/CharacterManager.cs"
