@@ -19,7 +19,8 @@ public class EquipTool : Equip
 
     private void Awake()
     {
-        camera = Camera.main;
+        GameObject cameraobject = GameObject.FindGameObjectWithTag("PlayerCamera");
+        camera = cameraobject.GetComponent<Camera>();
         animator = GetComponent<Animator>();
     }
 
