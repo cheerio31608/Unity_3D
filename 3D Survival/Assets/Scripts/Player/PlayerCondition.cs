@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public interface IDamagable
@@ -41,6 +42,19 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     public void Eat(float amount)
     {
         hunger.Add(amount);
+    }
+
+    public void Boost(float amount)
+    {
+        float originalSpeed = CharacterManager.Instance.Player.controller.moveSpeed;
+        CharacterManager.Instance.Player.controller.moveSpeed = amount;
+        StartCoroutine(EndBoostAfterDelay(originalSpeed));
+    }
+
+    private IEnumerator EndBoostAfterDelay(float originalSpeed)
+    {
+        yield return new WaitForSeconds(5f);
+        CharacterManager.Instance.Player.controller.moveSpeed = originalSpeed;
     }
 
     public void Die()
