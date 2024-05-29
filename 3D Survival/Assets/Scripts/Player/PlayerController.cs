@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 curMovementInput;
     public float jumpPower;
     public LayerMask groundLayerMask;
+    private float jumpStamina = 10;
 
     [Header("Look")]
     public Transform cameraContainer;
@@ -68,11 +69,14 @@ public class PlayerController : MonoBehaviour
     }
 
     public void OnJump(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Started && IsGrounded())
-        {
-            _rigidbody.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
-        }
+    {        
+            if (context.phase == InputActionPhase.Started && IsGrounded())
+            {
+                if (CharacterManager.Instance.Player.condition.UseStamina(jumpStamina))
+                {
+                    _rigidbody.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
+                }
+            }       
     }
 
     private void Move()
