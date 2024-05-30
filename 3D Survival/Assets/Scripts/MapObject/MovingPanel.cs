@@ -7,11 +7,10 @@ public class MovingPanel : MonoBehaviour
 {
     public float moveSpeed;
     private bool changeDirection = false;
-    private Rigidbody _rigidbody;
 
     private void Awake()
     {
-        _rigidbody = GetComponent<Rigidbody>();
+        
     }
 
     // Start is called before the first frame update
