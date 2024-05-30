@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 curMovementInput;
     public float jumpPower;
     public LayerMask groundLayerMask;
+    public LayerMask wallLayerMask;
     private float jumpStamina = 10;
 
     [Header("Look")]
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector]
     public bool canLook = true;
+    private Vector3 curClimbInput;
 
     public Action inventory;
 
@@ -131,6 +133,31 @@ public class PlayerController : MonoBehaviour
             inventory?.Invoke();
             ToggleCursor();
         }
+    }
+
+    public void OnClimb(InputAction.CallbackContext context)
+    {
+        if(context.phase == InputActionPhase.Started && IsHang())
+        {
+            _rigidbody.AddForce(Vector3.up * 50, ForceMode.Impulse);
+            Debug.Log("Climbing On");
+        }
+        else if(context.phase == InputActionPhase.Canceled)
+        {
+            Debug.Log("Climbing Off");
+        }
+    }
+
+
+    private bool IsHang()
+    {
+        Ray ray = new Ray(transform.position + (transform.forward * 0.2f) + (transform.up * 0.01f), transform.forward);
+        if (Physics.Raycast(ray, 0.5f, wallLayerMask))
+        {
+            return true;
+        }
+
+        return false;
     }
 
     void ToggleCursor()

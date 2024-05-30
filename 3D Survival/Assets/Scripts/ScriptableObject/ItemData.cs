@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 public enum ItemType
@@ -14,10 +15,24 @@ public enum ConsumableType
     Speed
 }
 
+public enum EquipableStatType
+{
+    Speed,
+    Jump,
+    Power
+}
+
 [System.Serializable]
 public class ItemDataConsumable
 {
     public ConsumableType type;
+    public float value;
+}
+
+[System.Serializable]
+public class ItemDataEquipable
+{
+    public EquipableStatType type;
     public float value;
 }
 
@@ -40,4 +55,5 @@ public class ItemData : ScriptableObject
 
     [Header("Equip")]
     public GameObject equipPrefab;
+    public ItemDataEquipable[] equipables;
 }

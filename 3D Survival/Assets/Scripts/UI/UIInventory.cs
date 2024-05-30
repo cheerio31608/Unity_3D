@@ -242,7 +242,7 @@ public class UIInventory : MonoBehaviour
     void UnEquip(int index)
     {
         slots[index].equipped = false;
-        CharacterManager.Instance.Player.equip.UnEquip();
+        CharacterManager.Instance.Player.equip.UnEquip(selectedItem.item);
         UpdateUI();
 
         if (selectedItemIndex == index)

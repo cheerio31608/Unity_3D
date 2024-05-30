@@ -41,6 +41,7 @@ public class MovingPanel : MonoBehaviour
         }
     }
 
+    // 플레이어가 발판에 접촉하는 순간
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
