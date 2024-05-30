@@ -46,3 +46,5 @@
     - 소비형
     - 기타
    
+### 시연 영상
+https://drive.google.com/file/d/1oCvcSnFohhvYbO6TtZUexSgEDZm1RA3f/view?usp=sharing
