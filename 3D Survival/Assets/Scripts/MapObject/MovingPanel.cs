@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MovingPanel : MonoBehaviour
@@ -26,7 +27,7 @@ public class MovingPanel : MonoBehaviour
     }
 
 
-    public void PanelMovement()
+    private void PanelMovement()
     {
         if(!changeDirection)
         {
@@ -37,6 +38,23 @@ public class MovingPanel : MonoBehaviour
         {
             transform.position += Vector3.right * moveSpeed * Time.deltaTime;
             if (gameObject.transform.position.x > 12) changeDirection = false;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.transform.SetParent(transform);
+        }
+    }
+
+    // 플레이어가 발판에서 떨어질 때 부모-자식 관계를 해제
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.transform.SetParent(null);
         }
     }
 }

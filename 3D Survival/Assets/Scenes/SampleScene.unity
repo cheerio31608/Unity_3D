@@ -5801,7 +5801,7 @@ GameObject:
   - component: {fileID: 1708862718}
   - component: {fileID: 1708862721}
   - component: {fileID: 1708862720}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MovingPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6956,7 +6956,7 @@ GameObject:
   - component: {fileID: 2147143576}
   - component: {fileID: 2147143578}
   - component: {fileID: 2147143577}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
